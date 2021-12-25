@@ -1,8 +1,4 @@
-@mixin tablet {
-  @media (min-width: 30em) {
-    @content;
-  }
-}
+@import "../../styles/_variables/mixins.scss";
 
 .layout {
   padding: 1rem;
@@ -11,8 +7,20 @@
   .container {
     margin: 0 auto;
 
-    @include tablet {
+    @include sm {
       max-width: 576px;
+    }
+
+    @include md {
+      max-width: 768px;
+    }
+
+    @include lg {
+      max-width: 960px;
+    }
+
+    @include xl {
+      max-width: 1140px;
     }
   }
 }

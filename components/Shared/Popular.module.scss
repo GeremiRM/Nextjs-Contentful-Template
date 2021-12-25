@@ -10,31 +10,31 @@
     width: fit-content;
   }
 
-  .stories {
-    .story {
+  .popular {
+    .article {
+      align-items: center;
       display: flex;
       margin-bottom: 1.5rem;
 
+      &__index {
+        font-family: "Times New Roman", Times, serif;
+        font-size: 3rem;
+        margin-right: 0.5rem;
+      }
+
       &__info {
-        margin-right: 1rem;
-
-        h3 {
-          font-size: 1.5rem;
-          font-weight: 700;
-        }
-
         p {
           color: rgb(30, 30, 30);
-          line-height: 150%;
-          margin-top: 0.5rem;
+          font-weight: 700;
         }
 
         &__author {
           font-size: 0.85rem;
-          margin-top: 1.25rem;
+          margin-top: 0.5rem;
 
           p {
             color: #6c757d;
+            font-weight: 400;
             margin-top: 0.25rem;
           }
         }
