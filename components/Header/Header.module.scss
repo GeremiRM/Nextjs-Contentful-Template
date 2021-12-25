@@ -1,0 +1,18 @@
+.header {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  height: 60px;
+  padding: 1rem 0;
+  margin-bottom: 0.5rem;
+
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+
+  .logo {
+    font-family: "Playfair Display", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+}

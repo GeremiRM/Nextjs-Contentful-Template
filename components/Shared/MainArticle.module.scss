@@ -1,0 +1,46 @@
+@mixin desktop {
+  @media (min-width: 60em) {
+    @content;
+  }
+}
+
+.card {
+  background: rgb(232, 243, 236);
+  padding-left: 1rem;
+
+  .info {
+    padding: 5rem 1.5rem;
+    padding-right: 3rem;
+
+    &__title {
+      font-family: "Playfair Display", sans-serif;
+      font-size: 2.5rem;
+      line-height: 120%;
+      margin-bottom: 1.25rem;
+    }
+
+    &__desc {
+      color: rgb(30, 30, 30);
+      line-height: 160%;
+      margin-bottom: 1.25rem;
+    }
+
+    &__btn {
+      background: #212121;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      font-family: "Source Sans Pro", sans-serif;
+      font-size: 1rem;
+      padding: 0.75rem 1.25rem;
+      transition: 0.25s all ease;
+
+      &:hover {
+        background: #111;
+        box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25) 0px 0px 9px
+          rgba(0, 0, 0, 0.25);
+      }
+    }
+  }
+}

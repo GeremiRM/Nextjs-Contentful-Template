@@ -1,0 +1,18 @@
+@mixin tablet {
+  @media (min-width: 30em) {
+    @content;
+  }
+}
+
+.layout {
+  padding: 1rem;
+  padding-top: 5px;
+
+  .container {
+    margin: 0 auto;
+
+    @include tablet {
+      max-width: 576px;
+    }
+  }
+}
