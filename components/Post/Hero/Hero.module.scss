@@ -1,0 +1,88 @@
+@import "../../../styles/_variables/mixins.scss";
+
+.hero {
+  display: grid;
+  grid-template-columns: 100%;
+
+  @include md {
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include lg {
+    gap: 4rem;
+  }
+
+  .content {
+    padding: 5rem 0;
+
+    @include md {
+      padding: 2rem 0;
+    }
+
+    h3 {
+      font-family: "Playfair Display", sans-serif;
+      font-size: 2.5rem;
+      line-height: 120%;
+      margin-bottom: 1.25rem;
+
+      @include xl {
+        font-size: 3.5rem;
+      }
+    }
+
+    p {
+      color: rgb(30, 30, 30);
+      line-height: 160%;
+    }
+
+    &__tag {
+      color: #ea2f65 !important;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .author {
+      align-items: center;
+      display: flex;
+      margin-top: 1rem;
+
+      &__img {
+        background: #333;
+        border-radius: 50%;
+        height: 70px;
+        margin-right: 0.5rem;
+        position: relative;
+        overflow: hidden;
+        width: 70px;
+
+        img {
+          object-fit: cover;
+        }
+      }
+
+      .info {
+        font-size: 0.85rem;
+
+        p {
+          color: #6c757d;
+        }
+
+        &__name {
+          color: #3a3e42 !important;
+        }
+      }
+    }
+  }
+
+  .img {
+    background-color: #333;
+    position: relative;
+    min-height: 400px;
+
+    image {
+      object-position: top;
+    }
+  }
+}

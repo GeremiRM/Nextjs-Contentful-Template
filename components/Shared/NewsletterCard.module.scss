@@ -1,0 +1,61 @@
+@import "../../styles/_variables/mixins.scss";
+
+.card {
+  background-color: #e8f3ec;
+  padding: 3rem;
+
+  @include md {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+
+  @include lg {
+    gap: 8rem;
+    padding: 2rem 3rem;
+  }
+
+  .text {
+    line-height: 150%;
+
+    h4 {
+      font-family: "Playfair Display", sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: rgb(30, 30, 30);
+      font-family: "Source Sans Pro", sans-serif;
+      font-size: 1rem;
+      line-height: 150%;
+      margin-bottom: 1rem;
+    }
+  }
+
+  form {
+    input,
+    button {
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      padding: 0.75rem 1rem;
+      width: 100%;
+    }
+
+    button {
+      background-color: #03a87c;
+      border-color: #03a87c;
+      color: white;
+      cursor: pointer;
+      transition: 0.25s all ease;
+
+      &:hover {
+        background-color: #007757;
+        border-color: #007757;
+      }
+    }
+  }
+}

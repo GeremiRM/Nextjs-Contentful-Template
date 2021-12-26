@@ -1,0 +1,60 @@
+@import "../../../styles/_variables/mixins.scss";
+
+.share {
+  padding: 2rem 0;
+  text-align: center;
+
+  @include lg {
+    padding: 0;
+    position: sticky;
+    top: 4rem;
+  }
+
+  &__title {
+    color: #777;
+    margin-bottom: 1rem;
+  }
+
+  .icons {
+    align-items: center;
+    color: white;
+    display: flex;
+    font-size: 1.5rem;
+    justify-content: center;
+
+    @include lg {
+      flex-direction: column;
+      font-size: 2rem;
+    }
+
+    .icon {
+      border-radius: 50%;
+      cursor: pointer;
+      display: grid;
+      margin: 0 0.25rem;
+      padding: 0.25rem;
+      place-items: center;
+      transition: 0.25s all ease;
+
+      @include lg {
+        margin-bottom: 1rem;
+      }
+
+      &:hover {
+        filter: brightness(0.75);
+      }
+    }
+
+    .facebook {
+      background: #3b5998;
+    }
+
+    .twitter {
+      background: #00acee;
+    }
+
+    .instagram {
+      background: #c32aa3;
+    }
+  }
+}
