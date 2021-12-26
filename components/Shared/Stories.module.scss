@@ -15,7 +15,7 @@
       display: flex;
       margin-bottom: 1.5rem;
 
-      &__info {
+      .info {
         margin-right: 1rem;
 
         h3 {
@@ -29,7 +29,7 @@
           margin-top: 0.5rem;
         }
 
-        &__author {
+        .author {
           font-size: 0.85rem;
           margin-top: 1.25rem;
 
@@ -40,12 +40,17 @@
         }
       }
 
-      &__img {
+      .img {
         background: black;
         height: 120px;
         min-height: 120px;
         min-width: 180px;
+        position: relative;
         width: 180px;
+
+        img {
+          object-fit: cover;
+        }
       }
     }
   }

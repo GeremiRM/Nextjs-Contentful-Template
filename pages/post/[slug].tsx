@@ -1,6 +1,7 @@
 import { Layout } from "../../components/Layout/Layout";
 
-import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import type { GetStaticPaths, GetStaticProps } from "next";
+import Head from "next/head";
 import { Post } from "../../components/Post/Post";
 import { createClient, EntryCollection } from "contentful";
 import { PostFields } from "../../types/types";
@@ -8,9 +9,14 @@ import { ReactNode } from "react";
 
 const index = ({ post }: { children: ReactNode; post: PostFields }) => {
   return (
-    <Layout>
-      <Post post={post} />
-    </Layout>
+    <>
+      <Head>
+        <title>{post.title}</title>
+      </Head>
+      <Layout>
+        <Post post={post} />
+      </Layout>
+    </>
   );
 };
 

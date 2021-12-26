@@ -43,7 +43,7 @@ export const Post: React.FC<PostProps> = ({ post }) => {
         </div>
       </div>
 
-      <Articles />
+      {/* <Articles /> */}
     </div>
   );
 };

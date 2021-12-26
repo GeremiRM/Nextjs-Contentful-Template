@@ -16,19 +16,19 @@
       display: flex;
       margin-bottom: 1.5rem;
 
-      &__index {
+      .idx {
         font-family: "Times New Roman", Times, serif;
         font-size: 3rem;
         margin-right: 0.5rem;
       }
 
-      &__info {
+      .info {
         p {
           color: rgb(30, 30, 30);
           font-weight: 700;
         }
 
-        &__author {
+        .author {
           font-size: 0.85rem;
           margin-top: 0.5rem;
 
@@ -38,14 +38,6 @@
             margin-top: 0.25rem;
           }
         }
-      }
-
-      &__img {
-        background: black;
-        height: 120px;
-        min-height: 120px;
-        min-width: 180px;
-        width: 180px;
       }
     }
   }

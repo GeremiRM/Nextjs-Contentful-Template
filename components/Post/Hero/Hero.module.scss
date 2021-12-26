@@ -81,8 +81,8 @@
     position: relative;
     min-height: 400px;
 
-    image {
-      object-position: top;
+    img {
+      object-fit: cover;
     }
   }
 }

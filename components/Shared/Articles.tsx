@@ -1,58 +1,57 @@
+import { Entry } from "contentful";
+import Image from "next/image";
+import Link from "next/link";
+
+import { PostFields } from "../../types/types";
+import { Article } from "./Article";
 import styles from "./Articles.module.scss";
 
-interface ArticlesProps {}
+interface ArticlesProps {
+  posts: Entry<PostFields>[];
+}
 
-export const Articles: React.FC<ArticlesProps> = ({}) => {
+export const Articles: React.FC<ArticlesProps> = ({ posts }) => {
+  const { title, featuredImage, description, author, slug } = posts[0].fields;
+
+  const renderSideArticles = () => {
+    return posts
+      .slice(1)
+      .map((post, idx) => (
+        <Article
+          title={post.fields.title}
+          author={post.fields.author.fields}
+          category={post.fields.category}
+          image={post.fields.featuredImage.fields.file.url}
+          wordsCount="10"
+          key={idx}
+          slug={post.fields.slug}
+        />
+      ));
+  };
+
   return (
     <div className={styles.articles}>
       <div className={styles.main}>
-        <div className={styles.main__img}></div>
-        <div className={styles.main__info}>
-          <h3>Brain Stimulation Relieves Depression Symptoms</h3>
-          <p>
-            Researchers have found an effective target in the brain for
-            electrical stimulation to improve mood in people suffering from
-            depression.
-          </p>
-          <div className={styles.main__info__author}>
-            <p>Favid Rick</p>
+        <div className={styles.img}>
+          <Image
+            src={`https://${featuredImage.fields.file.url}`}
+            alt={title}
+            layout="fill"
+          />
+        </div>
+        <div className={styles.info}>
+          <h3>
+            <Link href={`/post/${slug}`}>{title}</Link>
+          </h3>
+          <p>{description}</p>
+          <div className={styles.author}>
+            <p>{author.fields.name}</p>
             <p>Dec 12 - 5 min read</p>
           </div>
         </div>
       </div>
 
-      <div className={styles.side}>
-        <div className={styles.side__article}>
-          <div className={styles.side__article__img}></div>
-          <div className={styles.side__article__info}>
-            <p>Nasas IceSat space laser makes height maps of Earth</p>
-            <div className={styles.side__article__info__author}>
-              <p>Jake Bittle in LOVE/HATE</p>
-              <p>Dec 12 - 5 min read</p>
-            </div>
-          </div>
-        </div>
-        <div className={styles.side__article}>
-          <div className={styles.side__article__img}></div>
-          <div className={styles.side__article__info}>
-            <p>Nasas IceSat space laser makes height maps of Earth</p>
-            <div className={styles.side__article__info__author}>
-              <p>Jake Bittle in LOVE/HATE</p>
-              <p>Dec 12 - 5 min read</p>
-            </div>
-          </div>
-        </div>
-        <div className={styles.side__article}>
-          <div className={styles.side__article__img}></div>
-          <div className={styles.side__article__info}>
-            <p>Nasas IceSat space laser makes height maps of Earth</p>
-            <div className={styles.side__article__info__author}>
-              <p>Jake Bittle in LOVE/HATE</p>
-              <p>Dec 12 - 5 min read</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div className={styles.side}>{renderSideArticles()}</div>
     </div>
   );
 };

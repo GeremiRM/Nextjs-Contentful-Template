@@ -1,64 +1,45 @@
+import Image from "next/image";
+import Link from "next/link";
+
+import { Entry } from "contentful";
+import { PostFields } from "../../types/types";
 import styles from "./Stories.module.scss";
 
-interface StoriesProps {}
+interface StoriesProps {
+  posts: Entry<PostFields>[];
+}
 
-export const Stories: React.FC<StoriesProps> = ({}) => {
-  return (
-    <div className={styles.container}>
-      <p className={styles.title}>All Stories</p>
-      <div className={styles.stories}>
-        <div className={styles.story}>
-          <div className={styles.story__info}>
-            <h3>
-              Nearly 200 Great Barrier Reef coral species also live in the deep
-              sea
-            </h3>
+export const Stories: React.FC<StoriesProps> = ({ posts }) => {
+  const renderStories = () => {
+    return posts.map((post, idx) => (
+      <div className={styles.story} key={idx}>
+        <div className={styles.info}>
+          <h3>
+            <Link href={`/post/${post.fields.slug}`}>{post.fields.title}</Link>
+          </h3>
+          <p>{post.fields.description}</p>
+          <div className={styles.author}>
             <p>
-              There are more coral species lurking in the deep ocean that
-              previously thought.
+              {post.fields.author.fields.name} in {post.fields.category}
             </p>
-            <div className={styles.story__info__author}>
-              <p>Jake Bittle in SCIENCE</p>
-              <p>Dec 12 - 5 min read</p>
-            </div>
+            <p>Dec 12 - 5 min read</p>
           </div>
-          <div className={styles.story__img}></div>
         </div>
-        <div className={styles.story}>
-          <div className={styles.story__info}>
-            <h3>
-              Nearly 200 Great Barrier Reef coral species also live in the deep
-              sea
-            </h3>
-            <p>
-              There are more coral species lurking in the deep ocean that
-              previously thought.
-            </p>
-            <div className={styles.story__info__author}>
-              <p>Jake Bittle in SCIENCE</p>
-              <p>Dec 12 - 5 min read</p>
-            </div>
-          </div>
-          <div className={styles.story__img}></div>
-        </div>
-        <div className={styles.story}>
-          <div className={styles.story__info}>
-            <h3>
-              Nearly 200 Great Barrier Reef coral species also live in the deep
-              sea
-            </h3>
-            <p>
-              There are more coral species lurking in the deep ocean that
-              previously thought.
-            </p>
-            <div className={styles.story__info__author}>
-              <p>Jake Bittle in SCIENCE</p>
-              <p>Dec 12 - 5 min read</p>
-            </div>
-          </div>
-          <div className={styles.story__img}></div>
+        <div className={styles.img}>
+          <Image
+            src={`https://${post.fields.featuredImage.fields.file.url}`}
+            alt={post.fields.title}
+            layout="fill"
+          />
         </div>
       </div>
+    ));
+  };
+
+  return (
+    <div className={styles.container}>
+      <p className={styles.title}>Around the World</p>
+      <div className={styles.stories}>{renderStories()}</div>
     </div>
   );
 };
