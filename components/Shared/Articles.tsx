@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { PostFields } from "../../types/types";
+import { getArticleWordCount } from "../../utils/utils";
 import { Article } from "./Article";
 import styles from "./Articles.module.scss";
 
@@ -22,7 +23,7 @@ export const Articles: React.FC<ArticlesProps> = ({ posts }) => {
           author={post.fields.author.fields}
           category={post.fields.category}
           image={post.fields.featuredImage.fields.file.url}
-          wordsCount="10"
+          wordsCount={getArticleWordCount(post.fields.content)}
           key={idx}
           slug={post.fields.slug}
         />

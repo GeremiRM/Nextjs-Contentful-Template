@@ -3,11 +3,18 @@ import { Layout } from "../../components/Layout/Layout";
 import type { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import { Post } from "../../components/Post/Post";
-import { createClient, EntryCollection } from "contentful";
+import { createClient, EntryCollection, Entry } from "contentful";
 import { PostFields } from "../../types/types";
 import { ReactNode } from "react";
+import { Articles } from "../../components/Shared/Articles";
 
-const index = ({ post }: { children: ReactNode; post: PostFields }) => {
+interface Props {
+  children: ReactNode;
+  post: PostFields;
+  moreArticles: Entry<PostFields>[];
+}
+
+const index = ({ post, moreArticles }: Props) => {
   return (
     <>
       <Head>
@@ -15,6 +22,9 @@ const index = ({ post }: { children: ReactNode; post: PostFields }) => {
       </Head>
       <Layout>
         <Post post={post} />
+        {moreArticles.length > 2 && (
+          <Articles posts={moreArticles.slice(0, 4)} />
+        )}
       </Layout>
     </>
   );
@@ -41,14 +51,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { items } = await client.getEntries({
+  const { items }: { items: Entry<PostFields>[] } = await client.getEntries({
     content_type: "post",
     "fields.slug": params!.slug,
+  });
+
+  const { items: moreArticles } = await client.getEntries({
+    content_type: "post",
+    "fields.category": items[0].fields.category,
   });
 
   return {
     props: {
       post: items[0].fields,
+      moreArticles,
     },
   };
 };

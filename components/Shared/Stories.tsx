@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Entry } from "contentful";
 import { PostFields } from "../../types/types";
 import styles from "./Stories.module.scss";
+import { getArticleWordCount, getReadingTime } from "../../utils/utils";
 
 interface StoriesProps {
   posts: Entry<PostFields>[];
@@ -22,7 +23,11 @@ export const Stories: React.FC<StoriesProps> = ({ posts }) => {
             <p>
               {post.fields.author.fields.name} in {post.fields.category}
             </p>
-            <p>Dec 12 - 5 min read</p>
+            <p>
+              Dec 12 -{" "}
+              {getReadingTime(getArticleWordCount(post.fields.content))} min
+              read
+            </p>
           </div>
         </div>
         <div className={styles.img}>

@@ -19,8 +19,6 @@ export const Post: React.FC<PostProps> = ({ post }) => {
 
   const wordCount = getArticleWordCount(content);
 
-  console.log(post);
-
   return (
     <div className={styles.post}>
       <Hero

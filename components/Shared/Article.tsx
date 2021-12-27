@@ -4,13 +4,14 @@ import Image from "next/image";
 import { Author } from "../../types/types";
 
 import styles from "./Article.module.scss";
+import { getReadingTime } from "../../utils/utils";
 
 interface ArticleProps {
   image: string;
   title: string;
   author: Author;
   category: string;
-  wordsCount: string;
+  wordsCount: number;
   slug: string;
 }
 
@@ -37,7 +38,7 @@ export const Article: React.FC<ArticleProps> = ({
           <p>
             {author.name} in {category}
           </p>
-          <p>Dec 12 - 5 min read</p>
+          <p>Dec 12 - {getReadingTime(wordsCount)} min read</p>
         </div>
       </div>
     </div>
