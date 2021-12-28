@@ -1,14 +1,14 @@
 import Link from "next/link";
 
-import { Entry } from "contentful";
-import { PostFields } from "../../types/types";
+import { IPost } from "../../types/types";
 import styles from "./Popular.module.scss";
 
 interface PopularProps {
-  posts: Entry<PostFields>[];
+  posts: IPost[];
+  title?: string;
 }
 
-export const Popular: React.FC<PopularProps> = ({ posts }) => {
+export const Popular: React.FC<PopularProps> = ({ posts, title }) => {
   const renderArticles = () => {
     return posts.map((post, idx) => (
       <div className={styles.article} key={idx}>
@@ -21,7 +21,10 @@ export const Popular: React.FC<PopularProps> = ({ posts }) => {
           </p>
           <div className={styles.author}>
             <p>
-              {post.fields.author.fields.name} in {post.fields.category}
+              <Link href={`/author/${post.fields.author.fields.slug}`}>
+                {post.fields.author.fields.name}
+              </Link>{" "}
+              in {post.fields.category}
             </p>
           </div>
         </div>
@@ -31,7 +34,7 @@ export const Popular: React.FC<PopularProps> = ({ posts }) => {
 
   return (
     <div className={styles.container}>
-      <p className={styles.title}>Popular</p>
+      <p className={styles.title}>{title ?? "Popular"}</p>
       <div className={styles.popular}>{renderArticles()}</div>
     </div>
   );

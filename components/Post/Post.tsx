@@ -1,14 +1,14 @@
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+
 import { Hero } from "./Hero/Hero";
-import { Articles } from "../Shared/Articles";
 import { NewsletterCard } from "../Shared/NewsletterCard";
 import { Share } from "./Share/Share";
 
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-
 import styles from "./Post.module.scss";
-import { PostFields } from "../../types/types";
 
-import { getArticleWordCount } from "../../utils/utils";
+import { getReadingTime } from "../../utils/utils";
+
+import { PostFields } from "../../types/types";
 
 interface PostProps {
   post: PostFields;
@@ -16,8 +16,6 @@ interface PostProps {
 
 export const Post: React.FC<PostProps> = ({ post }) => {
   const { title, author, category, content, description, featuredImage } = post;
-
-  const wordCount = getArticleWordCount(content);
 
   return (
     <div className={styles.post}>
@@ -27,7 +25,7 @@ export const Post: React.FC<PostProps> = ({ post }) => {
         category={category}
         description={description}
         image={featuredImage.fields.file.url}
-        wordCount={wordCount}
+        readingTime={getReadingTime(content)}
       />
 
       <div className={styles.body}>
@@ -40,8 +38,6 @@ export const Post: React.FC<PostProps> = ({ post }) => {
           <NewsletterCard />
         </div>
       </div>
-
-      {/* <Articles /> */}
     </div>
   );
 };

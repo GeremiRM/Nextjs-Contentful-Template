@@ -1,15 +1,17 @@
-import { Author } from "../../../types/types";
-import styles from "./Hero.module.scss";
 import Image from "next/image";
-import { getReadingTime } from "../../../utils/utils";
+import Link from "next/link";
+
+import styles from "./Hero.module.scss";
+
+import { AuthorFields } from "../../../types/types";
 
 interface HeroProps {
   title: string;
   category: string;
   description: string;
-  author: Author;
+  author: AuthorFields;
   image: string;
-  wordCount: number;
+  readingTime: number;
 }
 
 export const Hero: React.FC<HeroProps> = ({
@@ -18,13 +20,9 @@ export const Hero: React.FC<HeroProps> = ({
   description,
   author,
   image,
-  wordCount,
+  readingTime,
 }) => {
   const { avatar, name, slug } = author;
-
-  const readingTime = getReadingTime(
-    title.length + description.length + wordCount
-  );
 
   return (
     <div className={styles.hero}>
@@ -41,7 +39,9 @@ export const Hero: React.FC<HeroProps> = ({
             />
           </div>
           <div className={styles.info}>
-            <p className={styles.info__name}>{name}</p>
+            <p className={styles.info__name}>
+              <Link href={`/author/${slug}`}>{name}</Link>
+            </p>
             <p>A few hours ago - Approx. {readingTime} min read</p>
           </div>
         </div>

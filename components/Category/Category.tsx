@@ -1,23 +1,22 @@
 import { IPost } from "../../types/types";
-import { Articles } from "../Shared/Articles";
 import { MainArticle } from "../Shared/MainArticle";
 import { Popular } from "../Shared/Popular";
 import { Stories } from "../Shared/Stories";
 
-import styles from "./Home.module.scss";
+import styles from "./Category.module.scss";
 
-interface HomeProps {
+interface CategoryProps {
   posts: IPost[];
+  category: string;
 }
 
-export const Home: React.FC<HomeProps> = ({ posts }) => {
+export const Category: React.FC<CategoryProps> = ({ posts, category }) => {
   return (
     <div>
       <MainArticle post={posts[0].fields} />
-      <Articles posts={posts.slice(1, 5)} />
       <div className={styles.columnToRow}>
-        <Stories posts={posts.slice(5, 8)} />
-        <Popular posts={posts.slice(8)} />
+        <Stories posts={posts.slice(1, 5)} title="Latest" />
+        <Popular posts={posts.slice(5, 9)} title={`Popular in ${category}`} />
       </div>
     </div>
   );

@@ -1,10 +1,15 @@
 import { Asset, RichTextContent, Entry } from "contentful";
 
-export type Author = {
+export interface IAuthor extends Entry<AuthorFields> {}
+
+export interface AuthorFields {
   avatar: Asset;
   name: string;
   slug: string;
-};
+  bio: string;
+}
+
+export interface IPost extends Entry<PostFields> {}
 
 export interface PostFields {
   title: string;
@@ -12,6 +17,6 @@ export interface PostFields {
   category: string;
   description: string;
   content: RichTextContent;
-  author: Entry<Author>;
+  author: IAuthor;
   featuredImage: Asset;
 }

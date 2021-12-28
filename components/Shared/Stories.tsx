@@ -1,16 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { Entry } from "contentful";
-import { PostFields } from "../../types/types";
 import styles from "./Stories.module.scss";
-import { getArticleWordCount, getReadingTime } from "../../utils/utils";
+
+import { getReadingTime } from "../../utils/utils";
+
+import { IPost } from "../../types/types";
 
 interface StoriesProps {
-  posts: Entry<PostFields>[];
+  posts: IPost[];
+  title?: string;
 }
 
-export const Stories: React.FC<StoriesProps> = ({ posts }) => {
+export const Stories: React.FC<StoriesProps> = ({ posts, title }) => {
   const renderStories = () => {
     return posts.map((post, idx) => (
       <div className={styles.story} key={idx}>
@@ -21,21 +23,24 @@ export const Stories: React.FC<StoriesProps> = ({ posts }) => {
           <p>{post.fields.description}</p>
           <div className={styles.author}>
             <p>
-              {post.fields.author.fields.name} in {post.fields.category}
+              <Link href={`/author/${post.fields.author.fields.slug}`}>
+                {post.fields.author.fields.name}
+              </Link>{" "}
+              in {post.fields.category}
             </p>
-            <p>
-              Dec 12 -{" "}
-              {getReadingTime(getArticleWordCount(post.fields.content))} min
-              read
-            </p>
+            <p>Dec 12 - {getReadingTime(post.fields.content)} min read</p>
           </div>
         </div>
         <div className={styles.img}>
-          <Image
-            src={`https://${post.fields.featuredImage.fields.file.url}`}
-            alt={post.fields.title}
-            layout="fill"
-          />
+          <Link href={`/post/${post.fields.slug}`}>
+            <a>
+              <Image
+                src={`https://${post.fields.featuredImage.fields.file.url}`}
+                alt={post.fields.title}
+                layout="fill"
+              />
+            </a>
+          </Link>
         </div>
       </div>
     ));
@@ -43,7 +48,7 @@ export const Stories: React.FC<StoriesProps> = ({ posts }) => {
 
   return (
     <div className={styles.container}>
-      <p className={styles.title}>Around the World</p>
+      <p className={styles.title}>{title ?? "More Stories"}</p>
       <div className={styles.stories}>{renderStories()}</div>
     </div>
   );

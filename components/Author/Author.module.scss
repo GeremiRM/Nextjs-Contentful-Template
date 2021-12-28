@@ -1,0 +1,105 @@
+@import "../../styles/_variables/mixins.scss";
+
+.author {
+  padding-bottom: 5rem;
+
+  .title {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+  }
+
+  .body {
+    display: flex;
+
+    .posts {
+      flex: 1;
+      margin-right: 3rem;
+
+      @include xl {
+        margin-right: 5rem;
+      }
+    }
+
+    .info {
+      align-items: center;
+      background: rgb(245, 245, 245);
+      border: 1px solid rgb(204, 204, 204);
+      border-radius: 8px;
+      display: none;
+      flex-direction: column;
+      height: fit-content;
+      padding: 1rem 1.5rem 0;
+      position: sticky;
+      text-align: center;
+      top: 4rem;
+      width: 325px;
+
+      @include lg {
+        display: flex;
+      }
+
+      .img {
+        border-radius: 50%;
+        height: 150px;
+        margin: 1rem 0;
+        position: relative;
+        overflow: hidden;
+        width: 150px;
+
+        img {
+          object-fit: cover;
+        }
+      }
+
+      &__name {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      &__bio {
+        color: rgb(65, 65, 65);
+        line-height: 150%;
+      }
+
+      .icons {
+        align-items: center;
+        color: white;
+        display: flex;
+        font-size: 1.5rem;
+        justify-content: center;
+        margin-top: 1.5rem;
+
+        .icon {
+          border-radius: 50%;
+          cursor: pointer;
+          display: grid;
+          margin: 0 0.25rem;
+          padding: 0.25rem;
+          place-items: center;
+          transition: 0.25s all ease;
+
+          @include lg {
+            margin-bottom: 1rem;
+          }
+
+          &:hover {
+            filter: brightness(0.75);
+          }
+        }
+
+        .facebook {
+          background: #3b5998;
+        }
+
+        .twitter {
+          background: #00acee;
+        }
+
+        .instagram {
+          background: #c32aa3;
+        }
+      }
+    }
+  }
+}

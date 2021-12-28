@@ -1,0 +1,10 @@
+@import "../../styles/_variables/mixins.scss";
+
+.columnToRow {
+  display: grid;
+
+  @include lg {
+    grid-template-columns: 68% 26%;
+    gap: 6%;
+  }
+}

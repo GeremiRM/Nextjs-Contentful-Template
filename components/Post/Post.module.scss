@@ -23,12 +23,16 @@
       margin-right: 1rem;
     }
 
-    &__p {
-      display: inline;
-    }
-
     p {
       margin-bottom: 2rem;
+    }
+
+    a {
+      color: blue;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

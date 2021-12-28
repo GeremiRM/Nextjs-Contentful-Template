@@ -1,14 +1,16 @@
-import { Entry } from "contentful";
 import Image from "next/image";
 import Link from "next/link";
 
-import { PostFields } from "../../types/types";
-import { getArticleWordCount } from "../../utils/utils";
 import { Article } from "./Article";
+
 import styles from "./Articles.module.scss";
 
+import { getReadingTime } from "../../utils/utils";
+
+import { IPost } from "../../types/types";
+
 interface ArticlesProps {
-  posts: Entry<PostFields>[];
+  posts: IPost[];
 }
 
 export const Articles: React.FC<ArticlesProps> = ({ posts }) => {
@@ -23,7 +25,7 @@ export const Articles: React.FC<ArticlesProps> = ({ posts }) => {
           author={post.fields.author.fields}
           category={post.fields.category}
           image={post.fields.featuredImage.fields.file.url}
-          wordsCount={getArticleWordCount(post.fields.content)}
+          readingTime={getReadingTime(post.fields.content)}
           key={idx}
           slug={post.fields.slug}
         />
@@ -34,11 +36,15 @@ export const Articles: React.FC<ArticlesProps> = ({ posts }) => {
     <div className={styles.articles}>
       <div className={styles.main}>
         <div className={styles.img}>
-          <Image
-            src={`https://${featuredImage.fields.file.url}`}
-            alt={title}
-            layout="fill"
-          />
+          <Link href={`/post/${slug}`}>
+            <a>
+              <Image
+                src={`https://${featuredImage.fields.file.url}`}
+                alt={title}
+                layout="fill"
+              />
+            </a>
+          </Link>
         </div>
         <div className={styles.info}>
           <h3>
@@ -46,7 +52,11 @@ export const Articles: React.FC<ArticlesProps> = ({ posts }) => {
           </h3>
           <p>{description}</p>
           <div className={styles.author}>
-            <p>{author.fields.name}</p>
+            <Link href={`/author/${author.fields.slug}`}>
+              <a>
+                <p>{author.fields.name}</p>
+              </a>
+            </Link>
             <p>Dec 12 - 5 min read</p>
           </div>
         </div>
