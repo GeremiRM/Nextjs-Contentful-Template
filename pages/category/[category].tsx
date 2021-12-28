@@ -1,7 +1,7 @@
 import Head from "next/head";
 import type { GetStaticPaths, GetStaticProps } from "next";
 import { ReactNode } from "react";
-import { client } from "../../contentful/contentful";
+import { client, CATEGORIES } from "../../contentful/contentful";
 
 import { useRouter } from "next/router";
 
@@ -15,9 +15,6 @@ interface Props {
   children: ReactNode;
   posts: IPost[];
 }
-
-// All the categories of your posts
-const CATEGORIES = ["technology", "culture", "politics", "health", "economy"];
 
 const Index = ({ posts }: Props) => {
   const router = useRouter();

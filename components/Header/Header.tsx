@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import styles from "./Header.module.scss";
+import { NavbarMobile } from "./NavbarMobile/NavbarMobile";
 
 export const Header: React.FC<{}> = ({}) => {
   return (
@@ -10,6 +11,7 @@ export const Header: React.FC<{}> = ({}) => {
           <p className={styles.logo}>Mundana</p>
         </a>
       </Link>
+      <NavbarMobile />
     </header>
   );
 };

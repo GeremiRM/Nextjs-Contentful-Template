@@ -1,0 +1,49 @@
+.nav {
+  .btn {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    color: #aaa;
+    cursor: pointer;
+    display: grid;
+    font-size: 1.75rem;
+    padding: 0.5rem 1rem;
+
+    transition: 0.25s all ease;
+
+    &:hover {
+      background: #efefef;
+      color: #666;
+    }
+  }
+
+  .navLinks {
+    background: white;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    transition: visibility 0.25s, opacity 0.25s ease;
+    width: 100%;
+    z-index: -10;
+
+    .link {
+      color: #777;
+      margin: 2.5rem 0;
+      text-transform: capitalize;
+      transition: 0.25s all ease;
+
+      &:hover {
+        color: #111;
+      }
+    }
+  }
+
+  .navLinks__open {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .navLinks__closed {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
