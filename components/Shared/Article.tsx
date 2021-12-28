@@ -28,7 +28,7 @@ export const Article: React.FC<ArticleProps> = ({
       <div className={styles.img}>
         <Link href={`/post/${slug}`}>
           <a>
-            <Image src={`https://${image}`} layout="fill" alt={title} />
+            <Image src={`https:${image}`} layout="fill" alt={title} />
           </a>
         </Link>
       </div>

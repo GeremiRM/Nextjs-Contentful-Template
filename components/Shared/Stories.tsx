@@ -35,7 +35,7 @@ export const Stories: React.FC<StoriesProps> = ({ posts, title }) => {
           <Link href={`/post/${post.fields.slug}`}>
             <a>
               <Image
-                src={`https://${post.fields.featuredImage.fields.file.url}`}
+                src={`https:${post.fields.featuredImage.fields.file.url}`}
                 alt={post.fields.title}
                 layout="fill"
               />

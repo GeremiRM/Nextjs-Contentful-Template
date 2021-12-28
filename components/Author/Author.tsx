@@ -38,7 +38,7 @@ export const Author: React.FC<AuthorProps> = ({ author, posts }) => {
         <div className={styles.info}>
           <div className={styles.img}>
             <Image
-              src={`https://${avatar.fields.file.url}`}
+              src={`https:${avatar.fields.file.url}`}
               layout="fill"
               alt={name}
             />

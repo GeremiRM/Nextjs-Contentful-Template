@@ -22,7 +22,7 @@ export const MainArticle: React.FC<MainArticleProps> = ({ post }) => {
       </div>
       <div className={styles.cover}>
         <Image
-          src={`https://${featuredImage.fields.file.url}`}
+          src={`https:${featuredImage.fields.file.url}`}
           alt={title}
           layout="fill"
           className={styles.cover__img}

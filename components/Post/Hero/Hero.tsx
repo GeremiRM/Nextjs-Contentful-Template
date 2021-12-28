@@ -33,7 +33,7 @@ export const Hero: React.FC<HeroProps> = ({
         <div className={styles.author}>
           <div className={styles.author__img}>
             <Image
-              src={`https://${avatar.fields.file.url}`}
+              src={`https:${avatar.fields.file.url}`}
               layout="fill"
               alt={`${name} avatar`}
             />
@@ -48,7 +48,7 @@ export const Hero: React.FC<HeroProps> = ({
       </div>
       <div className={styles.img}>
         <Image
-          src={`https://${image}`}
+          src={`https:${image}`}
           alt={`${title} featured image`}
           layout="fill"
         />

@@ -39,7 +39,7 @@ export const Articles: React.FC<ArticlesProps> = ({ posts }) => {
           <Link href={`/post/${slug}`}>
             <a>
               <Image
-                src={`https://${featuredImage.fields.file.url}`}
+                src={`https:${featuredImage.fields.file.url}`}
                 alt={title}
                 layout="fill"
               />

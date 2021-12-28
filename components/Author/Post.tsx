@@ -27,7 +27,7 @@ export const Post: React.FC<PostProps> = ({
       <div className={styles.img}>
         <Link href={`/post/${slug}`}>
           <a>
-            <Image src={`https://${featuredImage}`} alt={title} layout="fill" />
+            <Image src={`https:${featuredImage}`} alt={title} layout="fill" />
           </a>
         </Link>
       </div>
