@@ -12,10 +12,10 @@ import { IPost } from "../../types/types";
 interface Props {
   children: ReactNode;
   post: IPost;
-  moreArticles: IPost[];
+  morePosts: IPost[];
 }
 
-const index = ({ post, moreArticles }: Props) => {
+const index = ({ post, morePosts }: Props) => {
   return (
     <>
       <Head>
@@ -23,9 +23,7 @@ const index = ({ post, moreArticles }: Props) => {
       </Head>
       <Layout>
         <Post post={post.fields} />
-        {moreArticles.length > 2 && (
-          <Articles posts={moreArticles.slice(0, 4)} />
-        )}
+        {morePosts.length > 2 && <Articles posts={morePosts.slice(0, 4)} />}
       </Layout>
     </>
   );
@@ -52,7 +50,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     "fields.slug": params!.slug,
   });
 
-  const { items: moreArticles } = await client.getEntries({
+  const { items: morePosts } = await client.getEntries({
     content_type: "post",
     "fields.category": items[0].fields.category,
     "fields.slug[ne]": items[0].fields.slug,
@@ -62,8 +60,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       post: items[0],
-      moreArticles,
+      morePosts,
     },
+    revalidate: 1,
   };
 };
 
