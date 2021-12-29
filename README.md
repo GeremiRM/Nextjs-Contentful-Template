@@ -23,15 +23,13 @@
 
 ## 🧐 About <a name = "about"></a>
 
-Contentful template made with Next.js
+Contentful template for blog/news site made with Next.js. 
 
 # 🏁 Getting Started <a name = "getting_started"></a>
 
 Run the development server:
-
 ```
   npm install
-
   npm run dev
 ```
 
