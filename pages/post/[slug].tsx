@@ -16,6 +16,13 @@ interface Props {
 }
 
 const index = ({ post, morePosts }: Props) => {
+  if (!post)
+    return (
+      <Layout>
+        <div style={{ height: "80vh" }}></div>
+      </Layout>
+    );
+
   return (
     <>
       <Head>
@@ -40,7 +47,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
