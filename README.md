@@ -25,7 +25,7 @@
 
 Contentful template for blog/news site made with Next.js. 
 
-# 🏁 Getting Started <a name = "getting_started"></a>
+## 🏁 Getting Started <a name = "getting_started"></a>
 
 Run the development server:
 ```
