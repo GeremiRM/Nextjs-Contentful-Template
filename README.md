@@ -21,9 +21,13 @@
 - [Built Using](#built_using)
 - [Author](#author)
 
+<br />
+
 ## 🧐 About <a name = "about"></a>
 
 Contentful template for blog/news site made with Next.js. 
+
+<br />
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
