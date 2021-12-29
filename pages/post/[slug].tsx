@@ -57,6 +57,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     "fields.slug": params!.slug,
   });
 
+  if (!items.length) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
   const { items: morePosts } = await client.getEntries({
     content_type: "post",
     "fields.category": items[0].fields.category,

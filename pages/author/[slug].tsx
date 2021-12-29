@@ -55,6 +55,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     "fields.slug": params!.slug,
   });
 
+  if (!items.length) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
   const { items: posts } = await client.getEntries({
     content_type: "post",
     select: "fields",
