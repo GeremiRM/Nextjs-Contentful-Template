@@ -1,3 +1,5 @@
+@import "../../styles/_variables/mixins.scss";
+
 .header {
   align-items: center;
   background-color: white;
@@ -12,9 +14,28 @@
   top: 0;
   z-index: 100;
 
+  @include lg {
+    justify-content: flex-start;
+  }
+
   .logo {
     font-family: "Playfair Display", sans-serif;
     font-size: 1.25rem;
     font-weight: 700;
+  }
+
+  .mobile {
+    @include lg {
+      display: none;
+    }
+  }
+
+  .desktop {
+    display: none;
+    @include lg {
+      display: block;
+      flex: 1;
+      margin-left: 4rem;
+    }
   }
 }

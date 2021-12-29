@@ -12,4 +12,5 @@ export const CATEGORIES = [
   "politics",
   "health",
   "economy",
+  "world",
 ];

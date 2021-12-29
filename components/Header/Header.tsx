@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import styles from "./Header.module.scss";
+import { NavbarDesktop } from "./NavbarDesktop/NavbarDesktop";
 import { NavbarMobile } from "./NavbarMobile/NavbarMobile";
 
 export const Header: React.FC<{}> = ({}) => {
@@ -11,7 +12,12 @@ export const Header: React.FC<{}> = ({}) => {
           <p className={styles.logo}>Mundana</p>
         </a>
       </Link>
-      <NavbarMobile />
+      <div className={styles.mobile}>
+        <NavbarMobile />
+      </div>
+      <div className={styles.desktop}>
+        <NavbarDesktop />
+      </div>
     </header>
   );
 };
