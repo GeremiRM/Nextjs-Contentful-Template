@@ -1,34 +1,122 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
 
-## Getting Started
+<h3 align="center">Mundana Blog Template</h3>
 
-First, run the development server:
+<div align="center">
+  
+![Status](https://img.shields.io/badge/status-active-success.svg)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/GeremiRM/Mundana-Blog-Template/pulls)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-```bash
-npm run dev
-# or
-yarn dev
+</div>
+
+---
+
+## 📝 Table of Contents
+
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Built Using](#built_using)
+- [Author](#author)
+
+## 🧐 About <a name = "about"></a>
+
+Contentful template made with Next.js
+
+# 🏁 Getting Started <a name = "getting_started"></a>
+
+Run the development server:
+
+```
+  npm install
+
+  npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<br />
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## <a name ="configuration"> Configuration </a>
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+<br />
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+This template utilizes two content types:
 
-## Learn More
+### Author type:
 
-To learn more about Next.js, take a look at the following resources:
+- `name` - **Text** field (type **short text**)
+- `slug` - **Text** field (type **slug**, appearance **slug**)
+- `avatar` - **media** field (type **one file**)
+- `bio` - **Text** field (type **short text**)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<br />
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Post type:
 
-## Deploy on Vercel
+- `title` - **Text** field (type **short text**)
+- `slug` - **Text** field (type **slug**, appearance **slug**)
+- description - **Text** field (type **short text**)
+- `category` - **Text** field (type **short text**)
+- `author` - **reference** field (type **author**)
+- `content` - **Text** field (type **rich text**)
+- `featuredImage` - **media** field (type **one file**)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+You can also add more fields if you wish. If you do add more fields, remember to modify the `types.ts` with the name and type of said fields.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+EX:
+
+`types/types.ts`
+
+```
+export interface AuthorFields {
+  ...
+  age: number;
+}
+
+
+```
+
+(Keep in mind however that, unless you modify it, the template needs **at least** the fields already mentioned)
+
+<br />
+
+### Enviroment variables
+
+Create a `.env.local` file and inside it set the following variables:
+
+- `NEXT_PUBLIC_CONTENTFUL_SPACE_ID` should be the **Space ID** field of your API key
+- `NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN` should be the acces token field of your api key
+
+In the end your `env.local` file should like this:
+<br />
+
+```bash
+  NEXT_PUBLIC_CONTENTFUL_SPACE_ID=...
+  NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN=...
+```
+
+<br />
+
+## 🎈 Usage <a name="usage"></a>
+
+If everything has been set correctly, you should be able to run by using:
+
+```
+  npm install
+  npm run rev
+```
+
+<br />
+
+## ⛏️ Built Using <a name = "built_using"></a>
+
+- [Next.js](https://nextjs.org/) - Front-End Framework
+- [Contentful](https://expressjs.com/) - Content Manager
+- [Sass](https://sass-lang.com/) - CSS Preprocessor
+
+<br />
+
+## ✍️ Author <a name = "author"></a>
+
+[@Geremirm](https://github.com/GeremiRM)
