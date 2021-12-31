@@ -23,7 +23,7 @@
 
 <br />
 
-##About <a name = "about"></a>
+## About <a name = "about"></a>
 
 Contentful template for blog/news site made with Next.js. 
 
