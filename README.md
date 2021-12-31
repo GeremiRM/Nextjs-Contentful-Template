@@ -12,7 +12,7 @@
 
 ---
 
-## 📝 Table of Contents
+## Table of Contents
 
 - [About](#about)
 - [Getting Started](#getting_started)
@@ -23,13 +23,13 @@
 
 <br />
 
-## 🧐 About <a name = "about"></a>
+##About <a name = "about"></a>
 
 Contentful template for blog/news site made with Next.js. 
 
 <br />
 
-## 🏁 Getting Started <a name = "getting_started"></a>
+## Getting Started <a name = "getting_started"></a>
 
 Run the development server:
 ```
@@ -100,7 +100,7 @@ In the end your `env.local` file should like this:
 
 <br />
 
-## 🎈 Usage <a name="usage"></a>
+## Usage <a name="usage"></a>
 
 If everything has been set correctly, you should be able to run by using:
 
@@ -111,7 +111,7 @@ If everything has been set correctly, you should be able to run by using:
 
 <br />
 
-## ⛏️ Built Using <a name = "built_using"></a>
+## Built Using <a name = "built_using"></a>
 
 - [Next.js](https://nextjs.org/) - Front-End Framework
 - [Contentful](https://expressjs.com/) - Content Manager
